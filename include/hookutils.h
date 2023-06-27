@@ -10,12 +10,12 @@
 #define HOOKUTILS_JUMP_SIZE 5
 #endif
 
-#define HUDefineHook(ret, cconv, name, args...)                                \
-  typedef ret(cconv *Type_##name)(args);                                       \
+#define HUDefineHook(ret, cconv, name, ...)                                \
+  typedef ret(cconv *Type_##name)(__VA_ARGS__);                                       \
   Type_##name orig_##name;                                                     \
   uint64_t tramp_##name;                                                       \
   HUDetour *det_##name;                                                        \
-  ret cconv name(args)
+  ret cconv name(__VA_ARGS__)
 #define HUOriginal(name) PLH::FnCast(tramp_##name, orig_##name)
 #define HUAttachHook(name, addr)                                               \
   orig_##name = (Type_##name)(addr);                                           \
