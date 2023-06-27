@@ -25,7 +25,7 @@
 // TODO: detach
 
 namespace HookUtils {
-static uintptr_t FollowPtrs(uintptr_t addr, std::vector<unsigned int> offsets);
+uintptr_t FollowPtrs(uintptr_t addr, std::vector<unsigned int> offsets);
 class Asm {
   struct OldBytes {
     byte Bytes[HOOKUTILS_JUMP_SIZE];
