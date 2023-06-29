@@ -14,7 +14,7 @@ elseif()
 endif()
 
 file(GLOB HOOKUTILS_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp)
-add_library(hookutils ${HOOKUTILS_SOURCES})
+add_library(hookutils STATIC ${HOOKUTILS_SOURCES})
 target_include_directories(hookutils
     PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
